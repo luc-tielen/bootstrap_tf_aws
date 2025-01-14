@@ -1,5 +1,5 @@
 variable "environment" {
   description = "Environment name (e.g. dev, staging, prod, ...)"
-  type     = string
-  nullable = false
+  type        = string
+  nullable    = false
 }
