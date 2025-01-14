@@ -8,10 +8,6 @@ resource "aws_s3_bucket" "tf_state_bucket" {
   bucket = "tf-state-${var.environment}-${local.account_id}"
   acl    = "private"
 
-  versioning {
-    enabled = true
-  }
-
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
@@ -22,6 +18,13 @@ resource "aws_s3_bucket" "tf_state_bucket" {
 
   lifecycle {
     prevent_destroy = true
+  }
+}
+
+resource "aws_s3_bucket_versioning" "tf_state_bucket_versioning_config" {
+  bucket = aws_s3_bucket.tf_state_bucket.id
+  versioning_configuration {
+    status = "Enabled"
   }
 }
 
