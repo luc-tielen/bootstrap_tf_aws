@@ -32,9 +32,15 @@ resource "aws_s3_bucket_lifecycle_configuration" "tf_state_bucket_lifecycle_conf
     id     = "archive-noncurrent-versions"
     status = "Enabled"
 
+    filter {}  # apply to all objects
+
     noncurrent_version_transition {
       noncurrent_days = 30
       storage_class   = "GLACIER"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 365
     }
   }
 }
