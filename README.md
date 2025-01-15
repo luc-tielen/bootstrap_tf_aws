@@ -20,6 +20,23 @@ The `init.sh` script will create a new terraform workspace with the environment
 name. The `plan.sh` and `deploy.sh` scripts can then make use of the current
 workspace name / environment to deploy the infrastructure in AWS.
 
+Now you can start storing your terraform state of other projects (not this one!)
+in S3/DynamoDB. You can do this with the following block of code:
+
+```hcl
+terraform {
+  backend "s3" {
+    key            = "state/terraform.tfstate"
+    region         = "us-east-1"  # choose whatever region is most appropriate for you
+    encrypt        = true
+  }
+}
+```
+
+Next, create one `backend-${ENVIRONMENT}.hcl` per environment, and put the
+output of `make show` in each file. After this, add
+`-backend-config=backend-${ENVIRONMENT}.hcl` to each terraform command you use.
+
 ## Destroying the infra
 
 **IMPORTANT**: This will destroy the bucket and DynamoDB, which might contain your
