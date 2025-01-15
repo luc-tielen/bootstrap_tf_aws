@@ -34,8 +34,8 @@ terraform {
 ```
 
 Next, create one `backend-${ENVIRONMENT}.hcl` per environment, and put the
-output of `make show` in each file. After this, add
-`-backend-config=backend-${ENVIRONMENT}.hcl` to each terraform command you use.
+output of `make show` in each file. After this, run
+`terraform init -backend-config=backend-${ENVIRONMENT}.hcl`.
 
 ## Destroying the infra
 
