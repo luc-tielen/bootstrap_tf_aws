@@ -11,16 +11,16 @@ destroy:
 	./scripts/destroy.sh
 
 validate:
-	terraform validate
+	tofu validate
 
 output:
-	terraform output
+	tofu output
 
 format:
-	terraform fmt
+	tofu fmt
 
 lint:
-	terraform fmt -check
+	tofu fmt -check
 
 check: validate lint
 

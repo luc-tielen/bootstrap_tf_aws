@@ -3,6 +3,6 @@
 set -e
 
 read -p "Enter environment name: " ENVIRONMENT
-terraform workspace new ${ENVIRONMENT}
-terraform init
+tofu workspace new ${ENVIRONMENT}
+tofu init
 echo "You're now ready to bootstrap your TF state for the ${ENVIRONMENT} environment!"

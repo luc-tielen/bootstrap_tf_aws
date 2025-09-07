@@ -11,6 +11,6 @@ if [[ "${ANSWER}" != "yes" ]]; then
 fi
 
 echo "Destroying infrastructure.."
-ENVIRONMENT=$(terraform workspace show)
-terraform workspace select ${ENVIRONMENT}
-terraform destroy -var="environment=${ENVIRONMENT}"
+ENVIRONMENT=$(tofu workspace show)
+tofu workspace select ${ENVIRONMENT}
+tofu destroy -var="environment=${ENVIRONMENT}"

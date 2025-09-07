@@ -2,6 +2,6 @@
 
 set -e
 
-ENVIRONMENT=$(terraform workspace show)
-terraform workspace select ${ENVIRONMENT}
-terraform apply -var="environment=${ENVIRONMENT}"
+ENVIRONMENT=$(tofu workspace show)
+tofu workspace select ${ENVIRONMENT}
+tofu apply -var="environment=${ENVIRONMENT}"
